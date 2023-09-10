@@ -117,6 +117,6 @@ if ! shopt -oq posix; then
 fi
 
 # Nikhil added
-mkcdir() {
+mkcd() {
 	mkdir -p "$1" && cd "$1"
 }
