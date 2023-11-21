@@ -6,3 +6,7 @@
 ```bash
 find ~/.dotfile-collection/ -mindepth 1 -maxdepth 1 ! -name 'README.md' ! -name '.git' -exec ln -fs {} ~/ \;
 ```
+4. Run this command, which adds `tmux-plugins`:
+```bash
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
