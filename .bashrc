@@ -120,3 +120,15 @@ fi
 mkcd() {
 	mkdir -p "$1" && cd "$1"
 }
+. "$HOME/.cargo/env"
+
+source /usr/share/doc/fzf/examples/key-bindings.bash
+source /usr/share/doc/fzf/examples/completion.bash
+source /home/nsk/.config/broot/launcher/bash/br
+
+# old PS1
+# ${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$
+PS1="\e[0;34m\w \e[0m\e[1;34m> \e[0m"
+
+# for a GO install
+export PATH=$PATH:/usr/local/go/bin
