@@ -10,3 +10,20 @@ find ~/.dotfile-collection/ -mindepth 1 -maxdepth 1 ! -name 'README.md' ! -name 
 ```bash
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
+
+
+---
+For installing _fzf_:
+```bash
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+```
+
+For installing _broot_ and _dua_:
+
+Install rust from [here](https://rustup.rs/). Then 
+```bash
+sudo apt install build-essential libxcb1-dev libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev -y
+cargo install --locked broot
+cargo install dua-cli
+```
