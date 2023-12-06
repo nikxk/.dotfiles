@@ -132,3 +132,7 @@ PS1="\e[0;34m\w \e[0m\e[1;34m> \e[0m"
 
 # for a GO install
 export PATH=$PATH:/usr/local/go/bin
+
+# set fzf settings for file preview
+export FZF_CTRL_T_OPTS="--height=90% --layout=reverse --info=inline --preview='bat --color=always --style=numbers {}' --bind shift-up:preview-page-up,shift-down:preview-page-down"
+export FZF_DEFAULT_OPTS="--height=90% --layout=reverse --info=inline" 
