@@ -8,11 +8,11 @@
     1. Take out the USB stick and restart the PC.
     1. Log in, plug in the USB and use gparted to free it.
 1. Install a browser (Google Chrome)
-```sh
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo dpkg -i google-chrome-stable_current_amd64.deb
-rm google-chrome-stable_current_amd64.deb
-```
+   ```sh
+   wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+   sudo dpkg -i google-chrome-stable_current_amd64.deb
+   rm google-chrome-stable_current_amd64.deb
+   ```
 1. Install some necessary software:
 ```sh
 sudo apt update
