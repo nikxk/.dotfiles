@@ -38,7 +38,7 @@
    ```
 1. For installing _broot_ and _dua_:
 
-Install rust from [here](https://rustup.rs/). Then 
+   Install rust from [here](https://rustup.rs/). Then 
    ```bash
    sudo apt install build-essential libxcb1-dev libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev -y
    cargo install --locked broot
