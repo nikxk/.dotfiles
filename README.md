@@ -18,7 +18,7 @@
    sudo apt update
    sudo apt install git vim tmux net-tools openssh-client openssh-server neofetch
    ```
-1. Follow the instructions [here](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) to set up SSH for connecting with Github.
+1. Follow the instructions [here](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) to set up SSH for connecting with GitHub.
 1. Clone this repository
    ```sh
    git clone git@github.com:nikxk/.dotfiles.git ~/.dotfiles
@@ -31,12 +31,12 @@
    ```bash
    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
    ```
-1. For installing _fzf_:
+1. For installing [_fzf_](https://github.com/junegunn/fzf):
    ```bash
    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
    ~/.fzf/install
    ```
-1. For installing _broot_ and _dua_:
+1. For installing [_broot_](https://github.com/Canop/broot) and [_dua_](https://github.com/Byron/dua-cli):
 
    Install rust from [here](https://rustup.rs/). Then 
    ```bash
