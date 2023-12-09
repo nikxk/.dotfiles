@@ -2,7 +2,7 @@
 ## Instructions for setting up a new workspace
 1. Install Ubuntu 20.04
    1. Download it [here](https://releases.ubuntu.com/focal/)
-   1. Install instructions [here](https://help.ubuntu.com/community/Installation/FromUSBStick) for US    B stick
+   1. Install instructions [here](https://help.ubuntu.com/community/Installation/FromUSBStick) for USB stick
     1. Etch it onto a USB drive using [balena etcher](https://etcher.balena.io/#download-etcher)
     1. Restart the new PC with the USB drive plugged in and install Ubuntu.
     1. Take out the USB stick and restart the PC.
@@ -16,7 +16,7 @@
 1. Install some necessary software:
    ```sh
    sudo apt update
-   sudo apt install git vim tmux net-tools openssh-client openssh-server neofetch
+   sudo apt install git vim tmux net-tools openssh-client openssh-server neofetch curl
    ```
 1. Follow the instructions [here](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) to set up SSH for connecting with GitHub.
 1. Clone this repository
@@ -36,11 +36,14 @@
    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
    ~/.fzf/install
    ```
-1. For installing [_broot_](https://github.com/Canop/broot) and [_dua_](https://github.com/Byron/dua-cli):
+1. For installing [broot](https://github.com/Canop/broot), [dua](https://github.com/Byron/dua-cli) and [gitui](https://github.com/extrawurst/gitui):
 
    Install rust from [here](https://rustup.rs/). Then 
    ```bash
    sudo apt install build-essential libxcb1-dev libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev -y
    cargo install --locked broot
    cargo install dua-cli
+   cargo install gitui
+   
+   broot
    ```
