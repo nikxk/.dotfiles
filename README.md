@@ -16,7 +16,8 @@
 1. Install some necessary software:
    ```sh
    sudo apt update
-   sudo apt install git vim tmux net-tools openssh-client openssh-server neofetch curl
+   sudo apt install git vim tmux net-tools openssh-client openssh-server neofetch curl bat
+   mkdir -p ~/.local/bin && ln -s /usr/bin/batcat ~/.local/bin/bat
    ```
 1. Follow the instructions [here](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) to set up SSH for connecting with GitHub.
 1. Clone this repository
@@ -31,6 +32,7 @@
    ```bash
    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
    ```
+   And from inside tmux, do `prefix+r` to reload and `prefix+I` to install the plugins.
 1. For installing [_fzf_](https://github.com/junegunn/fzf):
    ```bash
    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
