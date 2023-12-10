@@ -47,3 +47,9 @@
    
    broot
    ```
+1. For installing [gitmux](https://github.com/arl/gitmux):
+
+   Install Go from [here](https://go.dev/doc/install). Then
+   ```sh
+   go install github.com/arl/gitmux@latest
+   ```
