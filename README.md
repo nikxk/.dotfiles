@@ -56,3 +56,6 @@
    ```sh
    go install github.com/arl/gitmux@latest
    ```
+
+Also check out 
+- [peek](https://github.com/phw/peek) (for getting gifs of the screen)
