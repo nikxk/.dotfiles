@@ -16,7 +16,7 @@
 1. Install some necessary software:
    ```sh
    sudo apt update
-   sudo apt install git vim tmux net-tools openssh-client openssh-server neofetch curl bat
+   sudo apt install git vim tmux net-tools openssh-client openssh-server neofetch curl bat htop
    mkdir -p ~/.local/bin && ln -s /usr/bin/batcat ~/.local/bin/bat
    ```
 1. Follow the instructions [here](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) to set up SSH for connecting with GitHub.
@@ -26,19 +26,19 @@
    ```
 1. Run this command (it adds all files in the git repo except the README to the root folder):
    ```bash
-   find ~/.dotfiles/ -mindepth 1 -maxdepth 1 ! -name 'README.md' ! -name '.git' -exec ln -fs {} ~/ \;
+   find ~/.dotfiles/ -mindepth 1 -maxdepth 1 -name ".*" ! -name ".git" -exec ln -fs {} ~/ \;
    ```
 1. Run this command, which adds `tmux-plugins`:
    ```bash
    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
    ```
    And from inside tmux, do `prefix+r` to reload and `prefix+I` to install the plugins.
-1. For installing [_fzf_](https://github.com/junegunn/fzf):
+1. For installing [fzf](https://github.com/junegunn/fzf):
    ```bash
    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
    ~/.fzf/install
    ```
-1. For installing [broot](https://github.com/Canop/broot), [dua](https://github.com/Byron/dua-cli) and [gitui](https://github.com/extrawurst/gitui):
+1. For installing [broot](https://github.com/Canop/broot), [dua](https://github.com/Byron/dua-cli), [gitui](https://github.com/extrawurst/gitui) and [bottom](https://github.com/ClementTsang/bottom):
 
    Install rust from [here](https://rustup.rs/). Then 
    ```bash
@@ -46,6 +46,7 @@
    cargo install --locked broot
    cargo install dua-cli
    cargo install gitui
+   cargo install bottom --locked
    
    broot
    ```
