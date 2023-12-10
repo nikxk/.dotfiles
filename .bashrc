@@ -120,15 +120,17 @@ fi
 mkcd() {
 	mkdir -p "$1" && cd "$1"
 }
-. "$HOME/.cargo/env"
-
-source /usr/share/doc/fzf/examples/key-bindings.bash
-source /usr/share/doc/fzf/examples/completion.bash
-source ~/.config/broot/launcher/bash/br
 
 # old PS1
 # ${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$
-PS1="\e[0;34m\w \e[0m\e[1;34m> \e[0m"
+PS1="\[\e[0;34m\]\w \[\e[0m\]\[\e[1;34m\]> \[\e[0m\]"
+
+# make vim default editor
+export VISUAL=vim
+export EDITOR="$VISUAL"
+
+# setup broot
+source $HOME/.config/broot/launcher/bash/br
 
 # for a GO install
 export PATH=$PATH:/usr/local/go/bin
@@ -136,3 +138,6 @@ export PATH=$PATH:/usr/local/go/bin
 # set fzf settings for file preview
 export FZF_CTRL_T_OPTS="--height=90% --layout=reverse --info=inline --preview='bat --color=always --style=numbers {}' --bind shift-up:preview-page-up,shift-down:preview-page-down"
 export FZF_DEFAULT_OPTS="--height=90% --layout=reverse --info=inline" 
+
+# setup fzf
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
