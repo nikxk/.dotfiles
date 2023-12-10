@@ -116,9 +116,14 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Nikhil added
+## Custom commands
+# For making and changing into a directory
 mkcd() {
 	mkdir -p "$1" && cd "$1"
+}
+# for activating a python pip virtual environment
+pyenv(){
+	source ~/venv/"$1"/bin/activate
 }
 
 # old PS1
