@@ -31,6 +31,7 @@
 1. Run this command, which adds `tmux-plugins`:
    ```bash
    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+   python3 -m pip install --user libtmux
    ```
    And from inside tmux, do `prefix+r` to reload and `prefix+I` to install the plugins.
 1. For installing [fzf](https://github.com/junegunn/fzf):
