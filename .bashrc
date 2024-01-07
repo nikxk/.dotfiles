@@ -143,6 +143,7 @@ export PATH=$PATH:/usr/local/go/bin
 
 # set fzf settings for file preview
 export FZF_CTRL_T_OPTS="--height=90% --layout=reverse --info=inline --preview='bat --color=always --style=numbers {}' --bind shift-up:preview-page-up,shift-down:preview-page-down"
+export FZF_ALT_C_OPTS="--height=90% --layout=reverse --info=inline --preview='tree -L 2 -Ct {}' --bind shift-up:preview-page-up,shift-down:preview-page-down"
 export FZF_DEFAULT_OPTS="--height=90% --layout=reverse --info=inline" 
 
 # setup fzf
