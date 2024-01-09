@@ -101,29 +101,59 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
 if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+	. ~/.bash_aliases
 fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
+	if [ -f /usr/share/bash-completion/bash_completion ]; then
+		. /usr/share/bash-completion/bash_completion
+	elif [ -f /etc/bash_completion ]; then
+		. /etc/bash_completion
+	fi
 fi
 
 ## Custom commands
+#
 # For making and changing into a directory
 mkcd() {
 	mkdir -p "$1" && cd "$1"
 }
+#
 # for activating a python pip virtual environment
-pyenv(){
-  source ~/venv/"$1"/bin/activate
+pyenv() {
+	source ~/.venv/"$1"/bin/activate
 }
+#
+# for displaying as long a tree as will fit in the terminal
+treefit() {
+	terminal_height=$(tput lines)
+
+	for ((depth = 3; depth >= 1; depth--)); do
+		tree_output=$(tree -Ct -L $depth "$1" 2>/dev/null)
+		output_height=$(echo "$tree_output" | wc -l)
+
+		if ((output_height <= terminal_height)); then
+			echo "$tree_output"
+			break
+		fi
+	done
+}
+export -f treefit
+#
+# for previewing a file or directory
+fzf_preview_f_or_d() {
+	if [ -f "$1" ]; then
+		bat --color=always --style=changes,header,grid "$1"
+	elif [ -d "$1" ]; then
+		treefit "$1"
+	else
+		echo "Not a file or directory."
+	fi
+}
+export -f fzf_preview_f_or_d
 
 # old PS1
 # ${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$
@@ -141,9 +171,9 @@ source $HOME/.config/broot/launcher/bash/br
 export PATH=$PATH:/usr/local/go/bin
 
 # set fzf settings for file preview
-export FZF_CTRL_T_OPTS="--height=90% --layout=reverse --info=inline --preview='bat --color=always --style=numbers {}' --bind shift-up:preview-page-up,shift-down:preview-page-down"
-export FZF_ALT_C_OPTS="--height=90% --layout=reverse --info=inline --preview='tree -L 2 -Ct {}' --bind shift-up:preview-page-up,shift-down:preview-page-down"
-export FZF_DEFAULT_OPTS="--height=90% --layout=reverse --info=inline" 
+export FZF_CTRL_T_OPTS="--height=90% --layout=reverse --info=inline --preview='fzf_preview_f_or_d {}' --bind shift-up:preview-page-up,shift-down:preview-page-down"
+export FZF_ALT_C_OPTS="--height=90% --layout=reverse --info=inline --preview='treefit {}' --bind shift-up:preview-page-up,shift-down:preview-page-down"
+export FZF_DEFAULT_OPTS="--height=90% --layout=reverse --info=inline"
 
 # setup fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
