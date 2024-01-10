@@ -158,6 +158,7 @@ export -f fzf_preview_f_or_d
 # old PS1
 # ${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$
 # PS1="\[\e[0;34m\]\w \[\e[0m\]\[\e[1;34m\]> \[\e[0m\]"
+PROMPT_DIRTRIM=3
 PS1="\[\033[38;5;27m\]\w \[\033[0m\]\[\033[38;5;42m\]❯ \[\033[0m\]"
 
 # make vim default editor
