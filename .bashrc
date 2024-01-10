@@ -116,17 +116,17 @@ if ! shopt -oq posix; then
 fi
 
 ## Custom commands
-#
+
 # For making and changing into a directory
 mkcd() {
 	mkdir -p "$1" && cd "$1"
 }
-#
+
 # for activating a python pip virtual environment
 pyenv() {
 	source ~/.venv/"$1"/bin/activate
 }
-#
+
 # for displaying as long a tree as will fit in the terminal
 treefit() {
 	terminal_height=$(tput lines)
@@ -142,7 +142,7 @@ treefit() {
 	done
 }
 export -f treefit
-#
+
 # for previewing a file or directory
 fzf_preview_f_or_d() {
 	if [ -f "$1" ]; then
@@ -171,9 +171,13 @@ source $HOME/.config/broot/launcher/bash/br
 export PATH=$PATH:/usr/local/go/bin
 
 # set fzf settings for file preview
-export FZF_CTRL_T_OPTS="--height=90% --layout=reverse --info=inline --preview='fzf_preview_f_or_d {}' --bind shift-up:preview-page-up,shift-down:preview-page-down"
-export FZF_ALT_C_OPTS="--height=90% --layout=reverse --info=inline --preview='treefit {}' --bind shift-up:preview-page-up,shift-down:preview-page-down"
-export FZF_DEFAULT_OPTS="--height=90% --layout=reverse --info=inline"
+export FZF_DEFAULT_OPTS="--height=90% --layout=reverse --info=inline --bind change:first"
+export FZF_CTRL_T_OPTS="--height=90% --layout=reverse --info=inline --bind change:first \
+  --preview='[ -z {q} ] && treefit . || fzf_preview_f_or_d {}' \
+  --bind shift-up:preview-page-up,shift-down:preview-page-down"
+export FZF_ALT_C_OPTS="--height=90% --layout=reverse --info=inline --bind change:first \
+  --preview='[ -z {q} ] && treefit . || treefit {}' \
+  --bind shift-up:preview-page-up,shift-down:preview-page-down"
 
 # setup fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
