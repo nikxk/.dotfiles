@@ -129,7 +129,7 @@ pyenv() {
 
 # for displaying as long a tree as will fit in the terminal
 treefit() {
-	terminal_height=$(tput lines)
+	terminal_height=$LINES
 
 	for ((depth = 3; depth >= 1; depth--)); do
 		tree_output=$(tree -Ct -L $depth "$1" 2>/dev/null)
@@ -137,9 +137,11 @@ treefit() {
 
 		if ((output_height <= terminal_height)); then
 			echo "$tree_output"
-			break
+			return
 		fi
 	done
+
+	echo "$tree_output"
 }
 export -f treefit
 
@@ -173,10 +175,10 @@ export PATH=$PATH:/usr/local/go/bin
 
 # set fzf settings for file preview
 export FZF_DEFAULT_OPTS="--height=90% --layout=reverse --info=inline --bind change:first"
-export FZF_CTRL_T_OPTS="--height=90% --layout=reverse --info=inline --bind change:first \
+export FZF_CTRL_T_OPTS="$FZF_DEFAULT_OPTS \
   --preview='[ -z {q} ] && treefit . || fzf_preview_f_or_d {}' \
   --bind shift-up:preview-page-up,shift-down:preview-page-down"
-export FZF_ALT_C_OPTS="--height=90% --layout=reverse --info=inline --bind change:first \
+export FZF_ALT_C_OPTS="$FZF_DEFAULT_OPTS \
   --preview='[ -z {q} ] && treefit . || treefit {}' \
   --bind shift-up:preview-page-up,shift-down:preview-page-down"
 
