@@ -1,0 +1,23 @@
+# some of the root directory folders
+.cargo/
+.cache/
+.conda/
+.config/
+.docker/
+.dotnet/
+.gnupg/
+.ipython/
+.local/
+miniconda3/
+.mozilla/
+.nv/
+.pki/
+.rustup/
+.singularity/
+snap/
+.venv/
+.vscode/
+.vscode-remote-containers/
+.vscode-server/
+
+.git/

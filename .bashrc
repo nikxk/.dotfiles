@@ -173,6 +173,9 @@ source $HOME/.config/broot/launcher/bash/br
 # for a GO install
 export PATH=$PATH:/usr/local/go/bin
 
+# setup fzf
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
 # set fzf settings for file preview
 export FZF_DEFAULT_OPTS="--height=90% --layout=reverse --info=inline --bind change:first"
 export FZF_CTRL_T_OPTS="$FZF_DEFAULT_OPTS \
@@ -181,9 +184,8 @@ export FZF_CTRL_T_OPTS="$FZF_DEFAULT_OPTS \
 export FZF_ALT_C_OPTS="$FZF_DEFAULT_OPTS \
   --preview='[ -z {q} ] && treefit . || treefit {}' \
   --bind shift-up:preview-page-up,shift-down:preview-page-down"
-
-# setup fzf
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export FZF_CTRL_T_COMMAND='fd -H --ignore-file $HOME/.dotfiles/.fzffdignore'
+export FZF_ALT_C_COMMAND='fd -H --type d --ignore-file $HOME/.dotfiles/.fzffdignore'
 
 # for auto launching the ssh agent (for gitui) (from https://docs.github.com/en/authentication/connecting-to-github-with-ssh/working-with-ssh-key-passphrases#auto-launching-ssh-agent-on-git-for-windows)
 env=~/.ssh/agent.env
