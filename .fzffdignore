@@ -5,7 +5,9 @@
 .config/
 .docker/
 .dotnet/
+.fzf/
 .gnupg/
+go/
 .ipython/
 .local/
 miniconda3/
@@ -19,5 +21,6 @@ snap/
 .vscode/
 .vscode-remote-containers/
 .vscode-server/
+.vnc
 
 .git/
