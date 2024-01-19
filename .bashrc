@@ -127,6 +127,19 @@ pyenv() {
 	source ~/.venv/"$1"/bin/activate
 }
 
+# for clearing ~/downloads/share/ and copying the listed files there
+sshare() {
+	# Step 1: Delete existing files in ~/downloads/share/
+	rm -rf ~/downloads/share/*
+
+	# Step 2: Copy provided files to ~/downloads/share/
+	for file in "$@"; do
+		cp -rp "$file" ~/downloads/share/
+	done
+
+	tree -Ct ~/downloads/share/
+}
+
 # for displaying as long a tree as will fit in the terminal
 treefit() {
 	terminal_height=$LINES
