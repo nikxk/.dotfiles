@@ -184,10 +184,10 @@ export FZF_CTRL_T_OPTS="$FZF_DEFAULT_OPTS \
 export FZF_ALT_C_OPTS="$FZF_DEFAULT_OPTS \
   --preview='[ -z {q} ] && treefit . || treefit {}' \
   --bind shift-up:preview-page-up,shift-down:preview-page-down"
-export FZF_CTRL_T_COMMAND='fd -H --ignore-file $HOME/.dotfiles/.fzffdignore'
-export FZF_ALT_C_COMMAND='fd -H --type d --ignore-file $HOME/.dotfiles/.fzffdignore'
+export FZF_CTRL_T_COMMAND='fd -HI --ignore-file $HOME/.dotfiles/.fzffdignore'
+export FZF_ALT_C_COMMAND='fd -HI --type d --ignore-file $HOME/.dotfiles/.fzffdignore'
 
-# for auto launching the ssh agent (for gitui) (from https://docs.github.com/en/authentication/connecting-to-github-with-ssh/working-with-ssh-key-passphrases#auto-launching-ssh-agent-on-git-for-windows)
+# >> for auto launching the ssh agent (for gitui) (from https://docs.github.com/en/authentication/connecting-to-github-with-ssh/working-with-ssh-key-passphrases#auto-launching-ssh-agent-on-git-for-windows)
 env=~/.ssh/agent.env
 
 agent_load_env() { test -f "$env" && . "$env" >|/dev/null; }
@@ -216,6 +216,7 @@ elif [ "$SSH_AUTH_SOCK" ] && [ $agent_run_state = 1 ]; then
 fi
 
 unset env
+# <<
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
