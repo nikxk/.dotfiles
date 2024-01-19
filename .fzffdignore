@@ -1,4 +1,5 @@
 # some of the root directory folders
+.build/
 .cargo/
 .cache/
 .conda/
@@ -24,3 +25,4 @@ snap/
 .vnc
 
 .git/
+*.simg/
