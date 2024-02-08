@@ -134,7 +134,7 @@ sshare() {
 
 	# Step 2: Copy provided files to ~/downloads/share/
 	for file in "$@"; do
-		cp -rp "$file" ~/downloads/share/
+		cp -r "$file" ~/downloads/share/
 	done
 
 	tree -Ct ~/downloads/share/
@@ -193,7 +193,8 @@ export PATH=$PATH:/usr/local/go/bin
 export FZF_DEFAULT_OPTS="--height=90% --layout=reverse --info=inline --bind change:first"
 export FZF_CTRL_T_OPTS="$FZF_DEFAULT_OPTS \
   --preview='[ -z {q} ] && treefit . || fzf_preview_f_or_d {}' \
-  --bind shift-up:preview-page-up,shift-down:preview-page-down"
+  --bind shift-up:preview-page-up,shift-down:preview-page-down \
+  --bind 'ctrl-a:select-all'"
 export FZF_ALT_C_OPTS="$FZF_DEFAULT_OPTS \
   --preview='[ -z {q} ] && treefit . || treefit {}' \
   --bind shift-up:preview-page-up,shift-down:preview-page-down"
