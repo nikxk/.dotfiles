@@ -3,10 +3,10 @@
 1. Install Ubuntu 20.04
    1. Download it [here](https://releases.ubuntu.com/focal/)
    1. Install instructions [here](https://help.ubuntu.com/community/Installation/FromUSBStick) for USB stick
-    1. Etch it onto a USB drive using [balena etcher](https://etcher.balena.io/#download-etcher)
-    1. Restart the new PC with the USB drive plugged in and install Ubuntu.
-    1. Take out the USB stick and restart the PC.
-    1. Log in, plug in the USB and use gparted to free it.
+   1. Etch it onto a USB drive using [balena etcher](https://etcher.balena.io/#download-etcher)
+   1. Restart the new PC with the USB drive plugged in and install Ubuntu.
+   1. Take out the USB stick and restart the PC.
+   1. Log in, plug in the USB and use gparted to free it.
 1. Install a browser (Google Chrome)
    ```sh
    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
@@ -60,3 +60,32 @@
 
 Also check out 
 - [peek](https://github.com/phw/peek) (for getting gifs of the screen)
+
+---
+## Using TMUX
+
+1. The `prefix` is `C-Space`.
+1. New pane/window/session
+   
+   (They open in the same path as the current pane.)
+
+   - Pane: `prefix + -` to split vertically, `prefix + =` to split horizontally
+   - Window: `prefix + c`
+   - Session: `prefix + C` and enter the name of the new session
+1. Break into window/session
+
+   - Pane into window: `prefix + b`
+   - Window into session: `prefix + B` and enter session name
+1. Kill window/session
+
+   - Kill window: `prefix + k`
+   - Kill session: `prefix + K`
+1. Switch panes: `M-Left`, `M-Right`, `M-Up`, `M-Down` or `M-h`, `M-l`, `M-k`, `M-j`
+1. Switch windows: `M-J` for previous, `M-K` for next, `C-\` for last
+1. Switch sessions: `M-H` for previous, `M-L` for next
+1. Maximize/minimize pane: `C-q`
+1. Copy mode:
+   
+   Enter the vi copy mode using `prefix + [`. Use `v` to select (then `r` for rectangle selection), `y` to yank and quit.
+1. Use `prefix + C-s` to save the tmux sessions, windows and pane paths and positions. This is reloaded across system reboots or on `prefix + C-r`.
+   
