@@ -137,7 +137,7 @@ sshare() {
 		cp -r "$file" ~/downloads/share/
 	done
 
-	tree -Ct ~/downloads/share/
+	tree -CtF ~/downloads/share/
 }
 
 # for displaying as long a tree as will fit in the terminal
@@ -145,7 +145,7 @@ treefit() {
 	terminal_height=$LINES
 
 	for ((depth = 3; depth >= 1; depth--)); do
-		tree_output=$(tree -Ct -L $depth "$1" 2>/dev/null)
+		tree_output=$(tree -CFt -L $depth "$1" 2>/dev/null)
 		output_height=$(echo "$tree_output" | wc -l)
 
 		if ((output_height <= terminal_height)); then
