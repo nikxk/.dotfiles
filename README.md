@@ -24,7 +24,7 @@
    ```sh
    git clone git@github.com:nikxk/.dotfiles.git ~/.dotfiles
    ```
-1. Run this command (it adds all files in the git repo except the README to the root folder):
+1. Run this command (it adds all files in the git repo except the README to the home directory):
    ```bash
    find ~/.dotfiles/ -mindepth 1 -maxdepth 1 -name ".*" ! -name ".git" -exec ln -fs {} ~/ \;
    ```
@@ -76,8 +76,9 @@ Also check out
 
    - Pane into window: `prefix + b`
    - Window into session: `prefix + B` and enter session name
-1. Kill window/session
+1. Kill pane/window/session
 
+   - Kill pane: `prefix + x`
    - Kill window: `prefix + k`
    - Kill session: `prefix + K`
 1. Switch panes: `M-Left`, `M-Right`, `M-Up`, `M-Down` or `M-h`, `M-l`, `M-k`, `M-j`
