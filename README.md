@@ -16,8 +16,9 @@
 1. Install some necessary software:
    ```sh
    sudo apt update
-   sudo apt install git vim tmux net-tools openssh-client openssh-server neofetch curl bat htop python-is-python3 python3-pip python3.8-venv ripgrep gnome-shell-extension-system-monitor gnome-tweaks
+   sudo apt install git vim tmux net-tools openssh-client openssh-server neofetch curl bat htop fd-find python-is-python3 python3-pip python3.8-venv ripgrep gnome-shell-extension-system-monitor gnome-tweaks
    mkdir -p ~/.local/bin && ln -s /usr/bin/batcat ~/.local/bin/bat
+   ln -s $(which fdfind) ~/.local/bin/fd
    ```
 1. Follow the instructions [here](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) to set up SSH for connecting with GitHub.
 1. Clone this repository
