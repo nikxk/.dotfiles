@@ -8,6 +8,7 @@ set number relativenumber
 set tabstop=4
 " Use space characters instead of tabs
 set expandtab
+filetype indent on
 
 " Do not save backup files
 set nobackup
