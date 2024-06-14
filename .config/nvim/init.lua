@@ -9,7 +9,7 @@ vim.wo.relativenumber = true
 vim.bo.tabstop = 4
 -- Use space characters instead of tabs
 vim.bo.expandtab = true
-vim.cmd('filetype indent on')
+vim.cmd('filetype plugin indent on')
 
 -- Do not save backup files
 vim.o.backup = false
@@ -49,7 +49,61 @@ require("lazy").setup({
 {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' }
-}
+},
+{
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+    config = function () 
+      local configs = require("nvim-treesitter.configs")
+
+      configs.setup({
+          ensure_installed = { "c", "lua", "vim", "vimdoc", "python", "cpp" },
+          sync_install = false,
+          highlight = { enable = true },
+          indent = { enable = true },  
+        })
+    end
+},
+{
+    'numToStr/Comment.nvim',
+    opts = {
+        -- add any options here
+    },
+    lazy = false,
+},
+{
+  "folke/which-key.nvim",
+  event = "VeryLazy",
+  init = function()
+    vim.o.timeout = true
+    vim.o.timeoutlen = 300
+  end,
+  opts = {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  }
+},
+{
+    "williamboman/mason.nvim"
+},
+{
+    "neovim/nvim-lspconfig",
+    -- opts = {
+    --   servers = {
+    --     pylsp = {},
+    --   },
+    -- },
+},
+{
+    "hrsh7th/nvim-cmp",
+},
+{
+    "petertriho/nvim-scrollbar",
+},
 })
 
 require('lualine').setup()
+require('mason').setup()
+require('scrollbar').setup()
+require'lspconfig'.pylsp.setup{}
