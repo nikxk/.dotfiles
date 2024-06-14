@@ -88,6 +88,6 @@ Also check out
 1. Maximize/minimize pane: `C-q`
 1. Copy mode:
    
-   Enter the vi copy mode using `prefix + [`. Use `v` to select (then `r` for rectangle selection), `y` to yank and quit.
+   Enter the vi copy mode using `prefix + [`. Use `v` to select (then `C-v` for rectangle selection), `y` to yank and quit.
 1. Use `prefix + C-s` to save the tmux sessions, windows and pane paths and positions. This is reloaded across system reboots or on `prefix + C-r`.
    
