@@ -208,3 +208,8 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+# TeX Live 2025 paths
+export PATH="$HOME/tools/texlive/2025/bin/x86_64-linux:$PATH"
+export MANPATH="$HOME/tools/texlive/2025/texmf-dist/doc/man:$MANPATH"
+export INFOPATH="$HOME/tools/texlive/2025/texmf-dist/doc/info:$INFOPATH"
