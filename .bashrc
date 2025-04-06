@@ -42,10 +42,8 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# Alias definitions.
-if [ -f ~/.bash_aliases ]; then
-	. ~/.bash_aliases
-fi
+# Load aliases if available
+[ -f ~/.bash_aliases ] && . ~/.bash_aliases
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -74,11 +72,9 @@ fi
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
-export PATH=$PATH:/usr/local/go/bin
-. "$HOME/.cargo/env"
-source $HOME/.config/broot/launcher/bash/br
-
-# setup fzf
+[ -d "/usr/local/go/bin" ] && export PATH=$PATH:/usr/local/go/bin
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
+[ -f "$HOME/.config/broot/launcher/bash/br" ] && source "$HOME/.config/broot/launcher/bash/br"
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # >>> conda initialize >>>
@@ -97,6 +93,6 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 # TeX Live 2025 paths
-export PATH="$HOME/tools/texlive/2025/bin/x86_64-linux:$PATH"
-export MANPATH="$HOME/tools/texlive/2025/texmf-dist/doc/man:$MANPATH"
-export INFOPATH="$HOME/tools/texlive/2025/texmf-dist/doc/info:$INFOPATH"
+[ -d "$HOME/tools/texlive/2025/bin/x86_64-linux" ] && export PATH="$HOME/tools/texlive/2025/bin/x86_64-linux:$PATH"
+[ -d "$HOME/tools/texlive/2025/texmf-dist/doc/man" ] && export MANPATH="$HOME/tools/texlive/2025/texmf-dist/doc/man:$MANPATH"
+[ -d "$HOME/tools/texlive/2025/texmf-dist/doc/info" ] && export INFOPATH="$HOME/tools/texlive/2025/texmf-dist/doc/info:$INFOPATH"
