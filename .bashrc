@@ -151,60 +151,21 @@ export PATH=$PATH:/usr/local/go/bin
 # setup fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-# set fzf settings for file preview
-export FZF_DEFAULT_OPTS="--height=90% --layout=reverse --info=inline --bind change:first"
-export FZF_CTRL_T_OPTS="$FZF_DEFAULT_OPTS \
-  --preview='[ -z {q} ] && treefit . || fzf_preview_f_or_d {}' \
-  --bind shift-up:preview-page-up,shift-down:preview-page-down \
-  --bind 'ctrl-a:select-all'"
-export FZF_ALT_C_OPTS="$FZF_DEFAULT_OPTS \
-  --preview='[ -z {q} ] && treefit . || treefit {}' \
-  --bind shift-up:preview-page-up,shift-down:preview-page-down"
-export FZF_CTRL_T_COMMAND='fd -HI --ignore-file $HOME/.dotfiles/.fzffdignore'
-export FZF_ALT_C_COMMAND='fd -HI --type d --ignore-file $HOME/.dotfiles/.fzffdignore'
+. "$HOME/.cargo/env"
 
-# >> for auto launching the ssh agent (for gitui) (from https://docs.github.com/en/authentication/connecting-to-github-with-ssh/working-with-ssh-key-passphrases#auto-launching-ssh-agent-on-git-for-windows)
-env=~/.ssh/agent.env
-
-agent_load_env() { test -f "$env" && . "$env" >|/dev/null; }
-
-agent_start() {
-	(
-		umask 077
-		ssh-agent >|"$env"
-	)
-	. "$env" >|/dev/null
-}
-
-agent_load_env
-
-# agent_run_state: 0=agent running w/ key; 1=agent w/o key; 2=agent not running
-agent_run_state=$(
-	ssh-add -l >|/dev/null 2>&1
-	echo $?
-)
-
-if [ ! "$SSH_AUTH_SOCK" ] || [ $agent_run_state = 2 ]; then
-	agent_start
-	ssh-add
-elif [ "$SSH_AUTH_SOCK" ] && [ $agent_run_state = 1 ]; then
-	ssh-add
-fi
-
-unset env
-# <<
+source $HOME/.config/broot/launcher/bash/br
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/nsk/miniconda3/bin/conda' 'shell.bash' 'hook' 2>/dev/null)"
+__conda_setup="$('$HOME/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
-	eval "$__conda_setup"
+    eval "$__conda_setup"
 else
-	if [ -f "/home/nsk/miniconda3/etc/profile.d/conda.sh" ]; then
-		. "/home/nsk/miniconda3/etc/profile.d/conda.sh"
-	else
-		export PATH="/home/nsk/miniconda3/bin:$PATH"
-	fi
+    if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "$HOME/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="$HOME/miniconda3/bin:$PATH"
+    fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
