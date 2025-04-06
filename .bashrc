@@ -36,7 +36,7 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
 fi
 
 # colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -60,76 +60,26 @@ fi
 
 ## Custom commands
 
-# For making and changing into a directory
-mkcd() {
-	mkdir -p "$1" && cd "$1"
-}
-
-# for activating a python pip virtual environment
-pyenv() {
-	source ~/.venv/"$1"/bin/activate
-}
-
-# for clearing ~/downloads/share/ and copying the listed files there
-sshare() {
-	# Step 1: Delete existing files in ~/downloads/share/
-	rm -rf ~/downloads/share/*
-
-	# Step 2: Copy provided files to ~/downloads/share/
-	for file in "$@"; do
-		cp -r "$file" ~/downloads/share/
-	done
-
-	tree -CtF ~/downloads/share/
-}
-
-# for displaying as long a tree as will fit in the terminal
-treefit() {
-	terminal_height=$LINES
-
-	for ((depth = 3; depth >= 1; depth--)); do
-		tree_output=$(tree -CFt -L $depth "$1" 2>/dev/null)
-		output_height=$(echo "$tree_output" | wc -l)
-
-		if ((output_height <= terminal_height)); then
-			echo "$tree_output"
-			return
-		fi
-	done
-
-	echo "$tree_output"
-}
-export -f treefit
-
-# for previewing a file or directory
-fzf_preview_f_or_d() {
-	if [ -f "$1" ]; then
-		bat --color=always --style=changes,header,grid "$1"
-	elif [ -d "$1" ]; then
-		treefit "$1"
-	else
-		echo "Not a file or directory."
-	fi
-}
-export -f fzf_preview_f_or_d
-
-# set the bash prompt
+# set the bash prompt with fallback for virtual terminals
 PROMPT_DIRTRIM=3
-PS1="\[\033[38;5;27m\]\w \[\033[0m\]\[\033[38;5;42m\]❯ \[\033[0m\]"
+if [ "$TERM" = "linux" ]; then
+    # Simple prompt for virtual console with standard '>' character
+    PS1="\[\033[38;5;39m\]\w \[\033[0m\]\[\033[38;5;42m\]> \[\033[0m\]"
+else
+    # Rich prompt for graphical terminals with Unicode character
+    PS1="\[\033[38;5;27m\]\w \[\033[0m\]\[\033[38;5;42m\]❯ \[\033[0m\]"
+fi
 
 # make vim default editor
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
-# for a GO install
 export PATH=$PATH:/usr/local/go/bin
+. "$HOME/.cargo/env"
+source $HOME/.config/broot/launcher/bash/br
 
 # setup fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-. "$HOME/.cargo/env"
-
-source $HOME/.config/broot/launcher/bash/br
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
