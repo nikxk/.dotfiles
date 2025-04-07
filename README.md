@@ -1,93 +1,97 @@
+# Setting up this repo
 
-## Instructions for setting up a new workspace
-1. Install Ubuntu 20.04
-   1. Download it [here](https://releases.ubuntu.com/focal/)
-   1. Install instructions [here](https://help.ubuntu.com/community/Installation/FromUSBStick) for USB stick
-   1. Etch it onto a USB drive using [balena etcher](https://etcher.balena.io/#download-etcher)
-   1. Restart the new PC with the USB drive plugged in and install Ubuntu.
-   1. Take out the USB stick and restart the PC.
-   1. Log in, plug in the USB and use gparted to free it.
-1. Install a browser (Google Chrome)
-   ```sh
-   wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-   sudo dpkg -i google-chrome-stable_current_amd64.deb
-   rm google-chrome-stable_current_amd64.deb
+After [connecting to GitHub with SSH](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent), 
+
+```bash
+git clone git@github.com:nikxk/.dotfiles.git ~/.dotfiles
+```
+Then add symlinks to necessary dotfiles:
+```bash
+find ~/.dotfiles/ -mindepth 1 -maxdepth 1 -name ".*" ! -name ".git" -exec ln -fs {} ~/ \;
+```
+
+Add the essential packages listed below. 
+To set up tmux, install the [tmux plugin manager](https://github.com/tmux-plugins/tpm) and [gitmux](https://github.com/arl/gitmux).
+
+# Useful packages
+
+Here are some useful packages.
+
+- Essentials
+
    ```
-1. Install some necessary software:
+   tree git vim tmux 
+   net-tools openssh-client openssh-server neofetch curl 
+   htop btm fd-find bat ripgrep
+   python3-pip
+   ```
+   To set up `bat` and `fd`, run
    ```sh
-   sudo apt update
-   sudo apt install git vim tmux net-tools openssh-client openssh-server neofetch curl bat htop fd-find python-is-python3 python3-pip python3.8-venv ripgrep gnome-shell-extension-system-monitor gnome-tweaks
-   mkdir -p ~/.local/bin && ln -s /usr/bin/batcat ~/.local/bin/bat
+   mkdir -p ~/.local/bin 
+   ln -s /usr/bin/batcat ~/.local/bin/bat
    ln -s $(which fdfind) ~/.local/bin/fd
    ```
-1. Follow the instructions [here](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) to set up SSH for connecting with GitHub.
-1. Clone this repository
-   ```sh
-   git clone git@github.com:nikxk/.dotfiles.git ~/.dotfiles
-   ```
-1. Run this command (it adds all files in the git repo except the README to the home directory):
-   ```bash
-   find ~/.dotfiles/ -mindepth 1 -maxdepth 1 -name ".*" ! -name ".git" -exec ln -fs {} ~/ \;
-   ```
-1. Run this command, which adds `tmux-plugins`:
-   ```bash
-   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-   python3 -m pip install --user libtmux
-   ```
-   And from inside tmux, do `prefix+r` to reload and `prefix+I` to install the plugins.
-1. For installing [fzf](https://github.com/junegunn/fzf):
-   ```bash
-   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-   ~/.fzf/install
-   ```
-1. For installing [broot](https://github.com/Canop/broot), [dua](https://github.com/Byron/dua-cli), [gitui](https://github.com/extrawurst/gitui) and [bottom](https://github.com/ClementTsang/bottom):
 
-   Install rust from [here](https://rustup.rs/). Then 
-   ```bash
-   sudo apt install build-essential libxcb1-dev libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev -y
-   cargo install --locked broot
-   cargo install dua-cli
-   cargo install gitui
-   cargo install bottom --locked
-   
-   broot
-   ```
-1. For installing [gitmux](https://github.com/arl/gitmux):
+- [fzf](https://github.com/junegunn/fzf) for fuzzy finding, navigating through the file system. 
 
-   Install Go from [here](https://go.dev/doc/install). Then
-   ```sh
-   go install github.com/arl/gitmux@latest
-   ```
+  `C-t` for getting files, `M-c` for changing directories and `C-r` for using bash commands in bash history. Some add-ons are provided [here](./.fzf.bash).
+
+- [dua](https://github.com/Byron/dua-cli) for tracking memory usage per file/directory with a nice terminal interface
+
+- [texlive](https://www.tug.org/texlive/quickinstall.html) for compiling LaTeX documents
 
 Also check out 
-- [peek](https://github.com/phw/peek) (for getting gifs of the screen)
+- [broot](https://github.com/Canop/broot) as a file explorer
+- [gitui](https://github.com/extrawurst/gitui) as a terminal UI for git
+- [peek](https://github.com/phw/peek) for recording the screen to gifs
+- [scrcpy](https://github.com/Genymobile/scrcpy) for interacting with Android phones
+- [kwin-gestures](https://github.com/taj-ny/InputActions) for additional touchpad gestures on KDE Plasma, add [this](https://github.com/peterfajdiga/kwin4_effect_geometry_change) to smoothen
+- `gnome-shell-extension-system-monitor`
+- `gnome-tweaks`
 
 ---
-## Using TMUX
+# TMUX config
 
-1. The `prefix` is `C-Space`.
-1. New pane/window/session
-   
-   (They open in the same path as the current pane.)
+The `prefix` is `C-Space`.
 
-   - Pane: `prefix + -` to split vertically, `prefix + =` to split horizontally
-   - Window: `prefix + c`
-   - Session: `prefix + C` and enter the name of the new session
-1. Break into window/session
-
-   - Pane into window: `prefix + b`
-   - Window into session: `prefix + B` and enter session name
-1. Kill pane/window/session
-
-   - Kill pane: `prefix + x`
-   - Kill window: `prefix + k`
-   - Kill session: `prefix + K`
-1. Switch panes: `M-Left`, `M-Right`, `M-Up`, `M-Down` or `M-h`, `M-l`, `M-k`, `M-j`
-1. Switch windows: `M-J` for previous, `M-K` for next, `C-\` for last
-1. Switch sessions: `M-H` for previous, `M-L` for next
-1. Maximize/minimize pane: `C-q`
 1. Copy mode:
    
-   Enter the vi copy mode using `prefix + [`. Use `v` to select (then `C-v` for rectangle selection), `y` to yank and quit.
+   Enter the vi copy mode using `prefix + [`. Use `v` to select (then `C-v` for rectangle selection) or `V` to select lines, `y` to yank and quit.
 1. Use `prefix + C-s` to save the tmux sessions, windows and pane paths and positions. This is reloaded across system reboots or on `prefix + C-r`.
-   
+
+## Pane/Window/Session management
+
+### Creation
+
+They open in the same path as the current pane.
+
+- Pane: `prefix + -` to split vertically, `prefix + =` to split horizontally
+- Window: `prefix + c`
+- Session: `prefix + C` and enter the name of the new session
+
+### Switching
+
+1. Switch panes: `M-Left`, `M-Right`, `M-Up`, `M-Down` or `M-h`, `M-l`, `M-k`, `M-j` to go left, right, up or down respectively.
+1. Switch windows: `M-J` for previous, `M-K` for next, `C-\` for last
+1. Switch sessions: `M-H` for previous, `M-L` for next
+
+### Kill
+
+`C-d` on a terminal closes it. Otherwise:
+
+- Kill pane: `prefix + x`
+- Kill window: `prefix + k`
+- Kill session: `prefix + K`
+
+### Breaking
+
+- Break pane into window: `prefix + b`
+- Break window into session: `prefix + B` and enter session name
+
+### Other
+
+- Maximize/minimize pane: `C-q`
+
+
+---
+`C-x` means Ctrl+x pressed together, `M-x` means Alt+x pressed together
