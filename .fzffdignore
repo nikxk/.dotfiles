@@ -20,10 +20,15 @@ miniconda3/
 snap/
 .venv/
 .vscode/
+.vscode-insiders/
 .vscode-remote-containers/
 .vscode-server/
 .vnc
+.tldr/
+tools/
+.tmux/
 
+.venv/
 .git/
 *.simg/
 __pycache__/

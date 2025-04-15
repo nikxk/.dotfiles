@@ -1,9 +1,8 @@
 # Setup fzf
 # ---------
-if [[ ! "$PATH" == */home/nsk/.fzf/bin* ]]; then
-  PATH="${PATH:+${PATH}:}/home/nsk/.fzf/bin"
+if [[ ! "$PATH" == *$HOME/tools/fzf/bin* ]]; then
+  PATH="${PATH:+${PATH}:}$HOME/tools/fzf/bin"
 fi
-
 
 # for displaying as long a tree as will fit in the terminal
 treefit() {
