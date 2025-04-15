@@ -34,7 +34,7 @@ Here are some useful packages.
 
 - [fzf](https://github.com/junegunn/fzf) for fuzzy finding, navigating through the file system. 
 
-  `C-t` for getting files, `M-c` for changing directories and `C-r` for using bash commands in bash history. Some add-ons are provided [here](./.fzf.bash).
+  `C-t` for getting files, `M-c` for changing directories and `C-r` for using bash commands in bash history. Some add-ons are provided [here](./.config/fzf/.fzf.bash). Helps with [git](https://github.com/junegunn/fzf-git.sh) as well.
 
 - [dua](https://github.com/Byron/dua-cli) for tracking memory usage per file/directory with a nice terminal interface
 
