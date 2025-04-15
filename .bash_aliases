@@ -20,8 +20,8 @@ alias l='ls -CF'
 alias v='nvim'
 alias g='gitui'
 alias p='python'
+t() { tmux attach 2>/dev/null || tmux; }
 
-alias ta='tmux attach'
 alias sauu='sudo apt update && sudo apt upgrade -y'
 alias sai='sudo apt install -y'
 alias cd.='cd ..'
