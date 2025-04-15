@@ -4,6 +4,10 @@ if [[ ! "$PATH" == *$HOME/tools/fzf/bin* ]]; then
   PATH="${PATH:+${PATH}:}$HOME/tools/fzf/bin"
 fi
 
+if [[ -f "$HOME/.config/fzf/fzf-git.sh" ]]; then
+	source "$HOME/.config/fzf/fzf-git.sh"
+fi
+
 # for displaying as long a tree as will fit in the terminal
 treefit() {
 	terminal_height=$LINES
@@ -43,8 +47,7 @@ export FZF_CTRL_T_OPTS="$FZF_DEFAULT_OPTS \
 export FZF_ALT_C_OPTS="$FZF_DEFAULT_OPTS \
   --preview='[ -z {q} ] && treefit . || treefit {}' \
   --bind shift-up:preview-page-up,shift-down:preview-page-down"
-export FZF_CTRL_T_COMMAND='fd -HI --ignore-file $HOME/.dotfiles/.fzffdignore'
-export FZF_ALT_C_COMMAND='fd -HI --type d --ignore-file $HOME/.dotfiles/.fzffdignore'
-
+export FZF_CTRL_T_COMMAND='fd -HI --ignore-file $HOME/.config/fzf/.fzffdignore'
+export FZF_ALT_C_COMMAND='fd -HI --type d --ignore-file $HOME/.config/fzf/.fzffdignore'
 
 eval "$(fzf --bash)"

@@ -75,7 +75,7 @@ export EDITOR="$VISUAL"
 [ -d "/usr/local/go/bin" ] && export PATH=$PATH:/usr/local/go/bin
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 [ -f "$HOME/.config/broot/launcher/bash/br" ] && source "$HOME/.config/broot/launcher/bash/br"
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f ~/.config/fzf/.fzf.bash ] && source ~/.config/fzf/.fzf.bash
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
