@@ -3,3 +3,5 @@
 	name = Nikhil Sethukumar
 [core]
 	editor = vim
+[init]
+	defaultBranch = main
