@@ -1,6 +1,5 @@
 # some of the root directory folders
 .build/
-.cargo/
 .cache/
 .conda/
 .config/
@@ -15,7 +14,6 @@ miniconda3/
 .mozilla/
 .nv/
 .pki/
-.rustup/
 .singularity/
 snap/
 .venv/
@@ -25,8 +23,8 @@ snap/
 .vscode-server/
 .vnc
 .tldr/
-tools/
 .tmux/
+tools/
 
 .venv/
 .git/
