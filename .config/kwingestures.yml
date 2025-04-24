@@ -1,0 +1,95 @@
+touchpad:
+
+  gestures:
+
+    # Window switching
+    - type: swipe
+      direction: left_right
+      fingers: 3
+      speed: slow
+
+      actions:
+        - on: begin
+          input:
+            - keyboard: [ +leftalt, tab]
+
+        - on: update
+          interval: -75
+          input:
+            - keyboard: [ leftshift+tab ]
+
+        - on: update
+          interval: 75
+          input:
+            - keyboard: [ tab ]
+
+        - on: end_cancel
+          input:
+            - keyboard: [ -leftalt ]
+
+
+    # Unmaximize/minimize
+    - type: swipe
+      fingers: 3
+      direction: down
+
+      actions:
+        # Unmaximize window if maximized
+        - on: begin
+          plasma_shortcut: kwin,Window Maximize
+          block_other: true # Prevent the minimize window action from triggering during the same gesture
+
+          conditions:
+            - window_state: [ maximized ]
+
+        # Minimize window if not fullscreen and not maximized
+        - on: begin
+          plasma_shortcut: kwin,Window Minimize
+
+          conditions:
+            - negate: [ window_state ]
+              window_state: [ fullscreen, maximized ]
+
+    # Maximize
+    - type: swipe
+      fingers: 3
+      direction: up
+
+      actions:
+        # Maximize window if not already maximized
+        - on: begin
+          plasma_shortcut: kwin,Window Maximize
+
+          conditions:
+            - negate: [ window_state ]
+              window_state: [ maximized ]
+
+    # Chrome back and forward
+    # Go back
+    - type: swipe
+      fingers: 2
+      direction: left
+      threshold: 20.0
+
+      actions:
+        - on: begin
+          input:
+            - keyboard: [ leftalt+right ]
+
+          conditions:
+            - window_class: chrome
+
+    # Go forward
+    - type: swipe
+      fingers: 2
+      direction: right
+      threshold: 20.0
+
+      actions:
+        - on: begin
+          input:
+            - keyboard: [ leftalt+left ]
+
+          conditions:
+            - window_class: chrome
+
