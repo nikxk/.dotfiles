@@ -64,32 +64,32 @@ touchpad:
             - negate: [ window_state ]
               window_state: [ maximized ]
 
-    # Chrome back and forward
-    # Go back
-    - type: swipe
-      fingers: 2
-      direction: left
-      threshold: 20.0
-
-      actions:
-        - on: begin
-          input:
-            - keyboard: [ leftalt+right ]
-
-          conditions:
-            - window_class: chrome
-
-    # Go forward
-    - type: swipe
-      fingers: 2
-      direction: right
-      threshold: 20.0
-
-      actions:
-        - on: begin
-          input:
-            - keyboard: [ leftalt+left ]
-
-          conditions:
-            - window_class: chrome
+    # # Chrome back and forward
+    # # Go back
+    # - type: swipe
+    #   fingers: 2
+    #   direction: left
+    #   threshold: 20.0
+    #
+    #   actions:
+    #     - on: begin
+    #       input:
+    #         - keyboard: [ leftalt+right ]
+    #
+    #       conditions:
+    #         - window_class: chrome
+    #
+    # # Go forward
+    # - type: swipe
+    #   fingers: 2
+    #   direction: right
+    #   threshold: 20.0
+    #
+    #   actions:
+    #     - on: begin
+    #       input:
+    #         - keyboard: [ leftalt+left ]
+    #
+    #       conditions:
+    #         - window_class: chrome
 
