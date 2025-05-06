@@ -5,7 +5,6 @@
 .config/
 .docker/
 .dotnet/
-.fzf/
 .gnupg/
 go/
 .ipython/
