@@ -1,6 +1,5 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
+# inspired by https://github.com/mrzool/bash-sensible/blob/master/sensible.bash
 
 # If not running interactively, don't do anything
 case $- in
@@ -18,6 +17,26 @@ shopt -s histappend
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=10000
 HISTFILESIZE=100000
+
+# Record each line as it gets issued
+PROMPT_COMMAND='history -a'
+
+# Don't record some commands
+export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history:clear"
+
+# Use standard ISO 8601 timestamp
+# %F equivalent to %Y-%m-%d
+# %T equivalent to %H:%M:%S (24-hours format)
+HISTTIMEFORMAT='%F %T '
+
+## BETTER DIRECTORY NAVIGATION ##
+
+# Prepend cd to directory names automatically
+shopt -s autocd 2> /dev/null
+# Correct spelling errors during tab-completion
+# shopt -s dirspell 2> /dev/null
+# Correct spelling errors in arguments supplied to cd
+# shopt -s cdspell 2> /dev/null
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
