@@ -2,41 +2,48 @@
 # inspired by https://github.com/mrzool/bash-sensible/blob/master/sensible.bash
 
 # If not running interactively, don't do anything
-case $- in
-*i*) ;;
-*) return ;;
-esac
+[ -z "$PS1" ] && return
+
+# Enable history expansion with space
+# E.g. typing !!<space> will replace the !! with your last command
+bind Space:magic-space
+
+# Perform file completion in a case insensitive fashion
+bind "set completion-ignore-case on"
+
+# Treat hyphens and underscores as equivalent
+bind "set completion-map-case on"
+
+# Display matches for ambiguous patterns at first tab press
+bind "set show-all-if-ambiguous on"
+
+# Immediately add a trailing slash when autocompleting symlinks to directories
+bind "set mark-symlinked-directories on"
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
-HISTCONTROL=ignoreboth
+HISTCONTROL=erasedups:ignoreboth
+export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:jobs:history:clear:reboot:t"
+PROMPT_COMMAND='history -a'
 
 # append to the history file, don't overwrite it
 shopt -s histappend
 
+# Save multi-line commands as one command
+shopt -s cmdhist
+
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=10000
 HISTFILESIZE=100000
-
-# Record each line as it gets issued
-PROMPT_COMMAND='history -a'
-
-# Don't record some commands
-export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history:clear"
-
-# Use standard ISO 8601 timestamp
-# %F equivalent to %Y-%m-%d
-# %T equivalent to %H:%M:%S (24-hours format)
-HISTTIMEFORMAT='%F %T '
 
 ## BETTER DIRECTORY NAVIGATION ##
 
 # Prepend cd to directory names automatically
 shopt -s autocd 2> /dev/null
 # Correct spelling errors during tab-completion
-# shopt -s dirspell 2> /dev/null
+shopt -s dirspell 2> /dev/null
 # Correct spelling errors in arguments supplied to cd
-# shopt -s cdspell 2> /dev/null
+shopt -s cdspell 2> /dev/null
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
