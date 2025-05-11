@@ -4,36 +4,14 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-# Enable history expansion with space
-bind Space:magic-space
+# Tell Readline to use the .inputrc file from the dotfiles directory
+[ -f "${HOME}/.dotfiles/bash_files/.inputrc" ] && export INPUTRC="${HOME}/.dotfiles/bash_files/.inputrc"
 
-# Perform file completion in a case insensitive fashion
-bind "set completion-ignore-case on"
+# Source Bash history settings
+[ -f "${HOME}/.dotfiles/bash_files/.history_settings" ] && . "${HOME}/.dotfiles/bash_files/.history_settings"
 
-# Treat hyphens and underscores as equivalent
-bind "set completion-map-case on"
-
-# Display matches for ambiguous patterns at first tab press
-bind "set show-all-if-ambiguous on"
-
-# Immediately add a trailing slash when autocompleting symlinks to directories
-bind "set mark-symlinked-directories on"
-
-# don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
-HISTCONTROL=erasedups:ignoreboth
-export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:jobs:history:clear:reboot:t"
-PROMPT_COMMAND='history -a'
-
-# append to the history file, don't overwrite it
-shopt -s histappend
-
-# Save multi-line commands as one command
-shopt -s cmdhist
-
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=10000
-HISTFILESIZE=100000
+# Load aliases if available
+[ -f "${HOME}/.dotfiles/bash_files/.bash_aliases" ] && . "${HOME}/.dotfiles/bash_files/.bash_aliases"
 
 ## BETTER DIRECTORY NAVIGATION ##
 
@@ -43,37 +21,16 @@ shopt -s autocd 2> /dev/null
 shopt -s dirspell 2> /dev/null
 # Correct spelling errors in arguments supplied to cd
 shopt -s cdspell 2> /dev/null
+# If set, the pattern "**" used in a pathname expansion context will
+# match all files and zero or more directories and subdirectories.
+shopt -s globstar
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-bind '"\e[A": history-search-backward'
-bind '"\e[B": history-search-forward'
-bind '"\e[C": forward-char'
-bind '"\e[D": backward-char'
-
-# If set, the pattern "**" used in a pathname expansion context will
-# match all files and zero or more directories and subdirectories.
-#shopt -s globstar
-
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-# set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-	debian_chroot=$(cat /etc/debian_chroot)
-fi
-
-# colored GCC warnings and errors
-export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-# Load aliases if available
-[ -f ~/.bash_aliases ] && . ~/.bash_aliases
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -86,8 +43,6 @@ if ! shopt -oq posix; then
 	fi
 fi
 
-## Custom commands
-
 # set the bash prompt with fallback for virtual terminals
 PROMPT_DIRTRIM=3
 if [ "$TERM" = "linux" ]; then
@@ -98,6 +53,8 @@ else
     PS1="\[\033[38;5;27m\]\w \[\033[0m\]\[\033[38;5;42m\]❯ \[\033[0m\]"
 fi
 
+# colored GCC warnings and errors
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 # make vim default editor
 export VISUAL=vim
 export EDITOR="$VISUAL"
@@ -106,6 +63,11 @@ export EDITOR="$VISUAL"
 [ -f "$HOME/tools/cargo/env" ] && . "$HOME/tools/cargo/env"
 [ -f "$HOME/.config/broot/launcher/bash/br" ] && source "$HOME/.config/broot/launcher/bash/br"
 [ -f ~/.config/fzf/.fzf.bash ] && source ~/.config/fzf/.fzf.bash
+
+# TeX Live 2025 paths
+[ -d "$HOME/tools/texlive/2025/bin/x86_64-linux" ] && export PATH="$HOME/tools/texlive/2025/bin/x86_64-linux:$PATH"
+[ -d "$HOME/tools/texlive/2025/texmf-dist/doc/man" ] && export MANPATH="$HOME/tools/texlive/2025/texmf-dist/doc/man:$MANPATH"
+[ -d "$HOME/tools/texlive/2025/texmf-dist/doc/info" ] && export INFOPATH="$HOME/tools/texlive/2025/texmf-dist/doc/info:$INFOPATH"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -121,11 +83,6 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
-# TeX Live 2025 paths
-[ -d "$HOME/tools/texlive/2025/bin/x86_64-linux" ] && export PATH="$HOME/tools/texlive/2025/bin/x86_64-linux:$PATH"
-[ -d "$HOME/tools/texlive/2025/texmf-dist/doc/man" ] && export MANPATH="$HOME/tools/texlive/2025/texmf-dist/doc/man:$MANPATH"
-[ -d "$HOME/tools/texlive/2025/texmf-dist/doc/info" ] && export INFOPATH="$HOME/tools/texlive/2025/texmf-dist/doc/info:$INFOPATH"
 
 # Remove duplicate entries from PATH
 export PATH="$(awk -v RS=':' '!a[$1]++{if(NR>1)printf ":";printf $1}' <<<"$PATH")"

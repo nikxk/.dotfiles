@@ -1,0 +1,24 @@
+# filepath: /home/nsk/.dotfiles/.inputrc
+# Settings for Readline (used by Bash)
+
+# Enable history expansion with space
+Space: magic-space
+
+# Perform file completion in a case insensitive fashion
+set completion-ignore-case on
+
+# Treat hyphens and underscores as equivalent
+set completion-map-case on
+
+# Display matches for ambiguous patterns at first tab press
+set show-all-if-ambiguous on
+
+# Immediately add a trailing slash when autocompleting symlinks to directories
+set mark-symlinked-directories on
+
+# History search backward/forward with arrow keys
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+# Standard arrow key behavior (can be omitted if default is desired)
+"\e[C": forward-char
+"\e[D": backward-char
