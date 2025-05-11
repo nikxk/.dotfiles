@@ -5,7 +5,6 @@
 [ -z "$PS1" ] && return
 
 # Enable history expansion with space
-# E.g. typing !!<space> will replace the !! with your last command
 bind Space:magic-space
 
 # Perform file completion in a case insensitive fashion
@@ -48,6 +47,11 @@ shopt -s cdspell 2> /dev/null
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
+
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
+bind '"\e[C": forward-char'
+bind '"\e[D": backward-char'
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
