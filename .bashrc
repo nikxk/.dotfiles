@@ -62,7 +62,7 @@ export EDITOR="$VISUAL"
 [ -d "/usr/local/go/bin" ] && export PATH=$PATH:/usr/local/go/bin
 [ -f "$HOME/tools/cargo/env" ] && . "$HOME/tools/cargo/env"
 [ -f "$HOME/.config/broot/launcher/bash/br" ] && source "$HOME/.config/broot/launcher/bash/br"
-[ -f ~/.config/fzf/.fzf.bash ] && source ~/.config/fzf/.fzf.bash
+[ -f "$HOME/.config/fzf/.fzf.bash" ] && source "$HOME/.config/fzf/.fzf.bash"
 
 # TeX Live 2025 paths
 [ -d "$HOME/tools/texlive/2025/bin/x86_64-linux" ] && export PATH="$HOME/tools/texlive/2025/bin/x86_64-linux:$PATH"
