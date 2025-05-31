@@ -24,8 +24,8 @@ snap/
 .tldr/
 .tmux/
 tools/
+.obsidian/
 
-.venv/
 .git/
 *.simg/
 __pycache__/
