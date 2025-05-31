@@ -60,6 +60,7 @@ The `prefix` is `C-Space`.
    
    Enter the vi copy mode using `prefix + [`. Use `v` to select (then `C-v` for rectangle selection) or `V` to select lines, `y` to yank and quit.
 1. Use `prefix + C-s` to save the tmux sessions, windows and pane paths and positions. This is reloaded across system reboots or on `prefix + C-r`.
+1. Use `prefix + C-I` to install new plugins, and `prefix + C-R` to re-source the tmux config file.
 
 ## Pane/Window/Session management
 
