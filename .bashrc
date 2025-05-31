@@ -59,7 +59,10 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
+[ -f ~/.ssh/id_ed25519 ] && ssh-add -q ~/.ssh/id_ed25519 2>/dev/null
+
 [ -d "/usr/local/go/bin" ] && export PATH=$PATH:/usr/local/go/bin
+[ -d "$HOME/tools/cargo/bin" ] && export PATH="$HOME/tools/cargo/bin:$PATH"
 [ -f "$HOME/tools/cargo/env" ] && . "$HOME/tools/cargo/env"
 [ -f "$HOME/.config/broot/launcher/bash/br" ] && source "$HOME/.config/broot/launcher/bash/br"
 [ -f "$HOME/.config/fzf/.fzf.bash" ] && source "$HOME/.config/fzf/.fzf.bash"
