@@ -1,7 +1,7 @@
 # Setup fzf
 # ---------
 if [[ ! "$PATH" == *$HOME/tools/fzf/bin* ]]; then
-  PATH="${PATH:+${PATH}:}$HOME/tools/fzf/bin"
+  PATH="$HOME/tools/fzf/bin${PATH:+:${PATH}}"
 fi
 
 if [[ -f "$HOME/.config/fzf/fzf-git.sh" ]]; then
