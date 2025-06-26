@@ -34,7 +34,7 @@ Here are some useful packages.
    ln -s $(which fdfind) ~/.local/bin/fd
    ```
 
-- [fzf](https://github.com/junegunn/fzf) for fuzzy finding, navigating through the file system. 
+- [fzf](https://github.com/junegunn/fzf) for fuzzy finding, navigating through the file system. Expected at `$HOME/tools/fzf`.
 
   `C-t` for getting files, `M-c` for changing directories and `C-r` for using bash commands in bash history. Some add-ons are provided [here](./.config/fzf/.fzf.bash). Helps with [git](https://github.com/junegunn/fzf-git.sh) as well.
 
