@@ -24,7 +24,7 @@ Here are some useful packages.
    ```
    tree git vim tmux 
    net-tools openssh-client openssh-server neofetch curl 
-   htop btm fd-find bat ripgrep
+   htop fd-find bat ripgrep
    python3-pip
    ```
    To set up `bat` and `fd`, run
@@ -39,6 +39,8 @@ Here are some useful packages.
   `C-t` for getting files, `M-c` for changing directories and `C-r` for using bash commands in bash history. Some add-ons are provided [here](./.config/fzf/.fzf.bash). Helps with [git](https://github.com/junegunn/fzf-git.sh) as well.
 
 - [dua](https://github.com/Byron/dua-cli) for tracking memory usage per file/directory with a nice terminal interface
+
+- [btm](https://github.com/ClementTsang/bottom) for a resource usage visualizer
 
 - [texlive](https://www.tug.org/texlive/quickinstall.html) for compiling LaTeX documents
 
