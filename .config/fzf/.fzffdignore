@@ -10,6 +10,7 @@ go/
 .ipython/
 .local/
 miniconda3/
+miniforge3/
 .mozilla/
 .nv/
 .pki/
@@ -25,6 +26,8 @@ snap/
 .tmux/
 tools/
 .obsidian/
+.cargo/
+.rustup/
 
 .git/
 *.simg/
