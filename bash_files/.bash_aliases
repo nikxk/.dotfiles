@@ -24,6 +24,9 @@ t() { tmux attach 2>/dev/null || tmux; }
 
 alias sauu='sudo apt update && sudo apt upgrade -y'
 alias sai='sudo apt install -y'
+
+alias rsynci='rsync -azh --info=progress2'
+
 alias cd.='cd ..'
 alias cd..='cd ../..'
 alias cd...='cd ../../..'
