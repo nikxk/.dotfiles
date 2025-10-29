@@ -62,9 +62,9 @@ export EDITOR="$VISUAL"
 [ -f ~/.ssh/id_ed25519 ] && ssh-add -q ~/.ssh/id_ed25519 2>/dev/null
 
 [ -d "/usr/local/go/bin" ] && export PATH=$PATH:/usr/local/go/bin
-[ -d "$HOME/tools/cargo/bin" ] && export PATH="$HOME/tools/cargo/bin:$PATH"
-[ -f "$HOME/tools/cargo/env" ] && . "$HOME/tools/cargo/env"
-[ -f "$HOME/.config/broot/launcher/bash/br" ] && source "$HOME/.config/broot/launcher/bash/br"
+[ -d "$HOME/go/bin" ] && export PATH=$PATH:$HOME/go/bin
+[ -d "$HOME/.cargo/bin" ] && export PATH="$HOME/.cargo/bin:$PATH"
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 [ -f "$HOME/.config/fzf/.fzf.bash" ] && source "$HOME/.config/fzf/.fzf.bash"
 
 # TeX Live 2025 paths
@@ -89,3 +89,4 @@ unset __conda_setup
 
 # Remove duplicate entries from PATH
 export PATH="$(awk -v RS=':' '!a[$1]++{if(NR>1)printf ":";printf $1}' <<<"$PATH")"
+

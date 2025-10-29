@@ -13,8 +13,6 @@ find ~/.dotfiles/ -mindepth 1 -maxdepth 1 -name ".*" ! -name ".git" -exec ln -fs
 Add the essential packages listed below. 
 To set up tmux, install the [tmux plugin manager](https://github.com/tmux-plugins/tpm) and [gitmux](https://github.com/arl/gitmux).
 
-If installing [rust](https://www.rust-lang.org/tools/install) to `$HOME/tools/`, set these environment variables before installation and before `cargo install <package>`: `export RUSTUP_HOME=~/tools/rustup && export CARGO_HOME=~/tools/cargo`.
-
 # Useful packages
 
 Here are some useful packages.
@@ -45,9 +43,9 @@ Here are some useful packages.
 - [texlive](https://www.tug.org/texlive/quickinstall.html) for compiling LaTeX documents
 
 Also check out 
-- [broot](https://github.com/Canop/broot) as a file explorer
 - [gitui](https://github.com/gitui-org/gitui) as a terminal UI for git
 - [peek](https://github.com/phw/peek) for recording the screen to gifs
+- [broot](https://github.com/Canop/broot) as a file explorer
 - [scrcpy](https://github.com/Genymobile/scrcpy) for interacting with Android phones
 - [kwin-gestures](https://github.com/taj-ny/InputActions) for additional touchpad gestures on KDE Plasma, add [this](https://github.com/peterfajdiga/kwin4_effect_geometry_change) to smoothen
 - `gnome-shell-extension-system-monitor`
