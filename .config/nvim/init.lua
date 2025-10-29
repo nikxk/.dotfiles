@@ -106,4 +106,19 @@ require("lazy").setup({
 require('lualine').setup()
 require('mason').setup()
 require('scrollbar').setup()
-require'lspconfig'.pylsp.setup{}
+
+-- Configure Python LSP using the new vim.lsp.config API
+vim.lsp.config.pylsp = {
+  cmd = { 'pylsp' },
+  filetypes = { 'python' },
+  root_markers = { 'pyproject.toml', 'setup.py', 'setup.cfg', 'requirements.txt', 'Pipfile', '.git' },
+}
+
+-- Enable the LSP for Python files
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'python',
+  callback = function()
+    vim.lsp.enable('pylsp')
+  end,
+})
+
