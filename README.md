@@ -7,8 +7,9 @@ git clone git@github.com:nikxk/.dotfiles.git ~/.dotfiles
 ```
 Then add symlinks to necessary dotfiles:
 ```bash
-find ~/.dotfiles/ -mindepth 1 -maxdepth 1 -name ".*" ! -name ".git" -exec ln -fs {} ~/ \;
+ln -s $HOME/.dotfiles/<filename> <filename>
 ```
+In particular, consider [.bashrc](./.bashrc), [.tmux.conf](./.tmux.conf), [.bash_logout](./.bash_logout) and [.config/nvim](./.config/nvim).
 
 Add the essential packages listed below. 
 To set up tmux, install the [tmux plugin manager](https://github.com/tmux-plugins/tpm) and [gitmux](https://github.com/arl/gitmux).
@@ -20,25 +21,19 @@ Here are some useful packages.
 - Essentials
 
    ```
-   tree git vim tmux 
+   tree git vim tmux htop 
    net-tools openssh-client openssh-server neofetch curl 
-   htop fd-find bat ripgrep
-   python3-pip
    ```
-   To set up `bat` and `fd`, run
-   ```sh
-   mkdir -p ~/.local/bin 
-   ln -s /usr/bin/batcat ~/.local/bin/bat
-   ln -s $(which fdfind) ~/.local/bin/fd
-   ```
+- After installing [rust](https://rust-lang.org/tools/install/) (`curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`), install using `cargo install --locked`:
+  - [`ripgrep`](https://github.com/BurntSushi/ripgrep) - `rg`, alternative to grep
+  - [`fd-find`](https://github.com/sharkdp/fd) - `fd`, alternative to find
+  - [`bat`](https://github.com/sharkdp/bat) - `bat`, alternative to cat
+  - [`dua-cli`](https://github.com/Byron/dua-cli) - `dua i`, tracking memory usage per file/directory with a nice terminal interface
+  - [`bottom`](https://github.com/ClementTsang/bottom) - `btm`, resource usage visualizer
 
 - [fzf](https://github.com/junegunn/fzf) for fuzzy finding, navigating through the file system. Expected at `$HOME/tools/fzf`.
 
   `C-t` for getting files, `M-c` for changing directories and `C-r` for using bash commands in bash history. Some add-ons are provided [here](./.config/fzf/.fzf.bash). Helps with [git](https://github.com/junegunn/fzf-git.sh) as well.
-
-- [dua](https://github.com/Byron/dua-cli) for tracking memory usage per file/directory with a nice terminal interface
-
-- [btm](https://github.com/ClementTsang/bottom) for a resource usage visualizer
 
 - [texlive](https://www.tug.org/texlive/quickinstall.html) for compiling LaTeX documents
 
