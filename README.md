@@ -30,6 +30,7 @@ Here are some useful packages.
   - [`bat`](https://github.com/sharkdp/bat) - `bat`, alternative to cat
   - [`dua-cli`](https://github.com/Byron/dua-cli) - `dua i`, tracking memory usage per file/directory with a nice terminal interface
   - [`bottom`](https://github.com/ClementTsang/bottom) - `btm`, resource usage visualizer
+  - [`tlrc`](https://github.com/tldr-pages/tldr) - `tldr`, quick help for usual commands
 
 - [fzf](https://github.com/junegunn/fzf) for fuzzy finding, navigating through the file system. Expected at `$HOME/tools/fzf`.
 
