@@ -9,7 +9,7 @@ Then add symlinks to necessary dotfiles:
 ```bash
 ln -s $HOME/.dotfiles/<filename> <filename>
 ```
-In particular, consider [.bashrc](./.bashrc), [.tmux.conf](./.tmux.conf), [.bash_logout](./.bash_logout) and [.config/nvim](./.config/nvim).
+In particular, consider [.bashrc](./.bashrc), [.tmux.conf](./.tmux.conf), [.bash_logout](./.bash_logout), [.config/gitui](./.config/gitui) and [.config/nvim](./.config/nvim).
 
 Add the essential packages listed below. 
 To set up tmux, install the [tmux plugin manager](https://github.com/tmux-plugins/tpm) and [gitmux](https://github.com/arl/gitmux).
