@@ -31,6 +31,7 @@ Here are some useful packages.
   - [`dua-cli`](https://github.com/Byron/dua-cli) - `dua i`, tracking memory usage per file/directory with a nice terminal interface
   - [`bottom`](https://github.com/ClementTsang/bottom) - `btm`, resource usage visualizer
   - [`tlrc`](https://github.com/tldr-pages/tldr) - `tldr`, quick help for usual commands
+  - [`gitui`](https://github.com/gitui-org/gitui) - `gitui`, terminal UI for git
 
 - [fzf](https://github.com/junegunn/fzf) for fuzzy finding, navigating through the file system. Expected at `$HOME/tools/fzf`.
 
@@ -39,7 +40,6 @@ Here are some useful packages.
 - [texlive](https://www.tug.org/texlive/quickinstall.html) for compiling LaTeX documents
 
 Also check out 
-- [gitui](https://github.com/gitui-org/gitui) as a terminal UI for git
 - [peek](https://github.com/phw/peek) for recording the screen to gifs
 - [broot](https://github.com/Canop/broot) as a file explorer
 - [scrcpy](https://github.com/Genymobile/scrcpy) for interacting with Android phones
