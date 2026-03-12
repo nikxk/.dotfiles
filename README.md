@@ -33,6 +33,8 @@ Here are some useful packages.
   - [`tlrc`](https://github.com/tldr-pages/tldr) - `tldr`, quick help for usual commands
   - [`gitui`](https://github.com/gitui-org/gitui) - `gitui`, terminal UI for git
 
+- [`copyq`](https://github.com/hluk/CopyQ) for a clipboard manager. For adding to Wayland-GNOME, add a keyboard shortcut "Super + V" as `copyq toggle` (also see [this issue](https://github.com/hluk/CopyQ/issues/1243))
+
 - [fzf](https://github.com/junegunn/fzf) for fuzzy finding, navigating through the file system. Expected at `$HOME/tools/fzf`.
 
   `C-t` for getting files, `M-c` for changing directories and `C-r` for using bash commands in bash history. Some add-ons are provided [here](./.config/fzf/.fzf.bash). Helps with [git](https://github.com/junegunn/fzf-git.sh) as well.
