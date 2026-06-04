@@ -1,5 +1,5 @@
-# Setup fzf
-# ---------
+# Setup fzf for zsh
+# -----------------
 if [[ -d "$HOME/.fzf/bin" && ! "$PATH" == *$HOME/.fzf/bin* ]]; then
     PATH="$HOME/.fzf/bin${PATH:+:${PATH}}"
 fi
@@ -9,8 +9,8 @@ if [[ -f "$HOME/.config/fzf/fzf-git.sh" ]]; then
 fi
 
 # Convenience wrappers around the shared preview script
-treefit()             { "$HOME/.config/fzf/preview.sh" tree "${1:-.}"; }
-fzf_preview_f_or_d()  { "$HOME/.config/fzf/preview.sh" "$1"; }
+treefit()             { "$HOME/.config/fzf/preview.sh" tree "${1:-.}" }
+fzf_preview_f_or_d()  { "$HOME/.config/fzf/preview.sh" "$1" }
 
 # fzf preview/option settings (preview logic lives in preview.sh)
 export FZF_DEFAULT_OPTS="--height=90% --layout=reverse --info=inline --bind change:first"
@@ -24,4 +24,4 @@ export FZF_ALT_C_OPTS="$FZF_DEFAULT_OPTS \
 export FZF_CTRL_T_COMMAND='fd -HI --ignore-file $HOME/.config/fzf/.fzffdignore'
 export FZF_ALT_C_COMMAND='fd -HI --type d --ignore-file $HOME/.config/fzf/.fzffdignore'
 
-eval "$(fzf --bash)"
+eval "$(fzf --zsh)"

@@ -9,7 +9,9 @@ Then add symlinks to necessary dotfiles:
 ```bash
 ln -s $HOME/.dotfiles/<filename> <filename>
 ```
-In particular, consider [.bashrc](./.bashrc), [.tmux.conf](./.tmux.conf), [.bash_logout](./.bash_logout), [.config/gitui](./.config/gitui) and [.config/nvim](./.config/nvim).
+In particular, consider [.bashrc](./.bashrc), [.zshrc](./.zshrc), [.tmux.conf](./.tmux.conf), [.bash_logout](./.bash_logout), [.config/fzf](./.config/fzf), [.config/gitui](./.config/gitui) and [.config/nvim](./.config/nvim).
+
+> Note: `.config/fzf` is required by both `.bashrc` and `.zshrc` (it holds `.fzf.bash` / `.fzf.zsh` and the shared `preview.sh`). For anything under `~/.config/`, use an absolute path — `ln -s ~/.dotfiles/.config/fzf ~/.config/fzf` — since relative symlinks resolve from the symlink's own directory, not your cwd.
 
 Add the essential packages listed below. 
 To set up tmux, install the [tmux plugin manager](https://github.com/tmux-plugins/tpm) and [gitmux](https://github.com/arl/gitmux).
@@ -35,7 +37,7 @@ Here are some useful packages.
 
 - [`copyq`](https://github.com/hluk/CopyQ) for a clipboard manager. For adding to Wayland-GNOME, add a keyboard shortcut "Super + V" as `copyq toggle` (also see [this issue](https://github.com/hluk/CopyQ/issues/1243))
 
-- [fzf](https://github.com/junegunn/fzf) for fuzzy finding, navigating through the file system. Expected at `$HOME/tools/fzf`.
+- [fzf](https://github.com/junegunn/fzf) for fuzzy finding, navigating through the file system. Expected at `$HOME/.fzf` (the default location used by fzf's install script).
 
   `C-t` for getting files, `M-c` for changing directories and `C-r` for using bash commands in bash history. Some add-ons are provided [here](./.config/fzf/.fzf.bash). Helps with [git](https://github.com/junegunn/fzf-git.sh) as well.
 

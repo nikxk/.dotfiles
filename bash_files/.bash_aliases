@@ -33,7 +33,7 @@ alias cd.='cd ..'
 alias cd..='cd ../..'
 alias cd...='cd ../../..'
 alias cd....='cd ../../../..'
-alias cdd='cd ~/downloads'
+alias cdd='cd ~/Downloads'
 
 # For making and changing into a directory
 mkcd() {
